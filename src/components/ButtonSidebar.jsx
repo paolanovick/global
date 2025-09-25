@@ -45,12 +45,15 @@ export default function ButtonSidebar() {
   const imageHeight = buttonHeight * 3 + 16; // 3 botones + gap
 
   return (
-    <section className="flex flex-col md:flex-row mt-8 gap-6">
+    <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
       {/* Botones izquierda */}
       <div className="flex flex-col gap-4 md:w-1/4">
         {allButtons.map((name, idx) => {
-          const [fromColor, , toColor] =
-            pastelColors[idx % pastelColors.length].split(" ");
+          // Tomamos los colores del array pastelColors
+          const colors = pastelColors[idx % pastelColors.length].split(" ");
+          const fromColor = colors[0];
+          const toColor = colors[2] || colors[1]; // fallback por si no hay 3 partes
+
           return (
             <a
               key={idx}
