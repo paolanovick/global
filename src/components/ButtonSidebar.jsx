@@ -1,4 +1,15 @@
 import React from "react";
+import {
+  FiSkiing,
+  FiTennis,
+  FiActivity,
+  FiStar,
+  FiUsers,
+  FiHeart,
+  FiUser,
+  FiSmile,
+  FiUserCheck,
+} from "react-icons/fi";
 
 const pastelColors = [
   "from-pink-200 to-pink-300",
@@ -17,9 +28,21 @@ export default function ButtonSidebar() {
   const group2 = ["Egresados", "Parejas", "Solos", "Solas", "Amigos"];
   const allButtons = [...group1, ...group2];
 
+  // Iconos correspondientes a cada botón
+  const buttonIcons = [
+    <FiSkiing size={24} />,
+    <FiTennis size={24} />,
+    <FiActivity size={24} />, // F1
+    <FiStar size={24} />, // Futbol
+    <FiUsers size={24} />, // Egresados
+    <FiHeart size={24} />, // Parejas
+    <FiUser size={24} />, // Solos
+    <FiSmile size={24} />, // Solas
+    <FiUserCheck size={24} />, // Amigos
+  ];
+
   const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
 
-  // Altura doble de antes
   const buttonHeight = 96; // px
   const imageHeight = buttonHeight * 3; // 3 botones apilados
 
@@ -40,9 +63,9 @@ export default function ButtonSidebar() {
                 pastelColors[idx % pastelColors.length].split(" ")[2],
             }}
           >
-            {/* Círculo al inicio */}
+            {/* Icono relativo al botón */}
             <div className="flex items-center justify-center w-20 h-full bg-white">
-              <img src="/circuito.png" alt="icon" className="w-10 h-10" />
+              {buttonIcons[idx % buttonIcons.length]}
             </div>
             {/* Texto */}
             <span className="ml-4 text-lg font-semibold text-gray-800">
