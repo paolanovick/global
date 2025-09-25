@@ -10,15 +10,15 @@ import {
 import { GiSkier, GiTennisRacket } from "react-icons/gi";
 
 const pastelColors = [
-  "from-pink-200 to-pink-300",
-  "from-blue-200 to-blue-300",
-  "from-green-200 to-green-300",
-  "from-yellow-200 to-yellow-300",
-  "from-purple-200 to-purple-300",
-  "from-orange-200 to-orange-300",
-  "from-teal-200 to-teal-300",
-  "from-lime-200 to-lime-300",
-  "from-rose-200 to-rose-300",
+  "from-pink-400 to-pink-500",
+  "from-blue-400 to-blue-500",
+  "from-green-400 to-green-500",
+  "from-yellow-400 to-yellow-500",
+  "from-purple-400 to-purple-500",
+  "from-orange-400 to-orange-500",
+  "from-teal-400 to-teal-500",
+  "from-lime-400 to-lime-500",
+  "from-rose-400 to-rose-500",
 ];
 
 export default function ButtonSidebar() {
@@ -50,23 +50,23 @@ export default function ButtonSidebar() {
         {allButtons.map((name, idx) => {
           const colors = pastelColors[idx % pastelColors.length].split(" ");
           const fromColor = colors[0];
-          const toColor = colors[2] || colors[1];
+          const toColor = colors[1];
 
           return (
             <a
               key={idx}
               href="#"
-              className="flex items-center w-full h-24 rounded-full shadow-lg transform transition hover:scale-105"
-              style={{
-                background: `linear-gradient(to right, ${fromColor}, ${toColor})`,
-              }}
+              className={`flex items-center w-full h-24 rounded-full shadow-lg transform transition hover:scale-105 bg-gradient-to-r ${fromColor} ${toColor}`}
             >
-              <div className="flex items-center justify-center w-20 h-full bg-white">
+              {/* círculo blanco con ícono negro */}
+              <div className="flex items-center justify-center w-20 h-20 ml-2 rounded-full bg-white shadow-md">
                 {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
-                  className: "text-gray-800",
+                  className: "text-black w-8 h-8",
                 })}
               </div>
-              <span className="ml-4 text-lg font-semibold text-gray-800">
+
+              {/* texto */}
+              <span className="ml-4 text-lg font-semibold text-white drop-shadow-sm">
                 {name}
               </span>
             </a>
