@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  FaSkiing,
+  FaTennisBall,
+  FaFlagCheckered,
+  FaFutbol,
+} from "react-icons/fa";
+import { FaUserGraduate, FaHeart, FaUser, FaUsers } from "react-icons/fa6";
 
 const pastelColors = [
   "from-pink-200 to-pink-300",
@@ -18,6 +25,19 @@ export default function ButtonSidebar() {
   const allButtons = [...group1, ...group2];
 
   const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
+
+  // Íconos asignados
+  const iconMap = {
+    Ski: <FaSkiing className="w-8 h-8 text-gray-700" />,
+    Tenis: <FaTennisBall className="w-8 h-8 text-green-600" />,
+    F1: <FaFlagCheckered className="w-8 h-8 text-black" />,
+    Futbol: <FaFutbol className="w-8 h-8 text-green-700" />,
+    Egresados: <FaUserGraduate className="w-8 h-8 text-purple-600" />,
+    Parejas: <FaHeart className="w-8 h-8 text-red-500" />,
+    Solos: <FaUser className="w-8 h-8 text-gray-700" />,
+    Solas: <FaUser className="w-8 h-8 text-pink-500" />,
+    Amigos: <FaUsers className="w-8 h-8 text-blue-600" />,
+  };
 
   // Altura doble de antes
   const buttonHeight = 96; // px
@@ -40,9 +60,9 @@ export default function ButtonSidebar() {
                 pastelColors[idx % pastelColors.length].split(" ")[2],
             }}
           >
-            {/* Círculo al inicio */}
+            {/* Círculo al inicio con ícono */}
             <div className="flex items-center justify-center w-20 h-full bg-white">
-              <img src="/circuito.png" alt="icon" className="w-10 h-10" />
+              {iconMap[name]}
             </div>
             {/* Texto */}
             <span className="ml-4 text-lg font-semibold text-gray-800">
