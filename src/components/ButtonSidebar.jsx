@@ -1,3 +1,4 @@
+// ButtonSidebar.jsx
 import React from "react";
 import {
   FiActivity,
@@ -44,7 +45,7 @@ export default function ButtonSidebar() {
   const imageHeight = buttonHeight * 3 + 16; // 3 botones + gap
 
   return (
-    <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
+    <section className="flex flex-col md:flex-row mt-8 gap-6">
       {/* Botones izquierda */}
       <div className="flex flex-col gap-4 md:w-1/4">
         {allButtons.map((name, idx) => {
@@ -54,7 +55,7 @@ export default function ButtonSidebar() {
             <a
               key={idx}
               href="#"
-              className={`flex items-center w-full h-24 rounded-full shadow-lg transform transition hover:scale-105`}
+              className="flex items-center w-full h-24 rounded-full shadow-lg transform transition hover:scale-105"
               style={{
                 background: `linear-gradient(to right, ${fromColor}, ${toColor})`,
               }}

@@ -1,4 +1,6 @@
+// Page.jsx
 import React from "react";
+import ButtonSidebar from "./ButtonSidebar";
 import AutoScrollRow from "./AutoScrollRow";
 
 export default function Page() {
@@ -22,14 +24,17 @@ export default function Page() {
   const thirdRow = [...primaryItems];
 
   return (
-    <div className="flex flex-col gap-12">
-      {/* Primera fila */}
+    <div className="flex flex-col gap-12 px-4 md:px-16 mt-8">
+      {/* Sidebar con botones e imágenes */}
+      <ButtonSidebar />
+
+      {/* Fila 1: colores primarios */}
       <AutoScrollRow items={primaryItems} direction="left" />
 
-      {/* Segunda fila */}
+      {/* Fila 2: colores pasteles */}
       <AutoScrollRow items={pastelItems} direction="right" />
 
-      {/* Tercera fila (repetición primarios) */}
+      {/* Fila 3: repetir primarios */}
       <AutoScrollRow items={thirdRow} direction="left" />
     </div>
   );
