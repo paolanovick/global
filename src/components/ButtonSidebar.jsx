@@ -56,17 +56,17 @@ export default function ButtonSidebar() {
             <a
               key={idx}
               href="#"
-              className={`flex items-center w-full h-24 rounded-full shadow-lg transform transition hover:scale-105 bg-gradient-to-r ${fromColor} ${toColor}`}
+              className={`flex items-center w-full h-14 rounded-full border border-gray-200/50 shadow-sm bg-gradient-to-r ${fromColor} ${toColor} transition hover:shadow-md hover:scale-[1.02]`}
             >
-              {/* círculo blanco con ícono negro */}
-              <div className="flex items-center justify-center w-20 h-20 ml-2 rounded-full bg-white shadow-md">
+              {/* círculo blanco con ícono */}
+              <div className="flex items-center justify-center w-12 h-12 ml-2 rounded-full bg-white border border-gray-200 shadow-sm">
                 {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
-                  className: "text-black w-8 h-8",
+                  className: "text-gray-700 w-5 h-5",
                 })}
               </div>
 
               {/* texto */}
-              <span className="ml-4 text-lg font-semibold text-white drop-shadow-sm">
+              <span className="ml-3 text-sm font-medium text-gray-700 tracking-wide">
                 {name}
               </span>
             </a>
