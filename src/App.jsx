@@ -30,7 +30,14 @@ function App() {
 
       <main className="w-full flex-1">
         <HeroCarousel />
-
+        {/* Franja con texto animado */}
+        <div className="w-full bg-gray-100 border-y border-gray-200 overflow-hidden">
+          <p className="animate-marquee text-gray-700 text-sm font-medium py-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit • Vivamus
+            lacinia odio vitae vestibulum vestibulum • Cras venenatis euismod
+            malesuada
+          </p>
+        </div>
         {/* Botones tipo sidebar debajo del carousel */}
         <ButtonSidebar />
 

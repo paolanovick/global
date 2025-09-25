@@ -74,3 +74,13 @@ backdrop-filter: blur(3px);
 @media (max-width: 640px) {
 .card-fixed { min-width: 160px; height: 110px; }
 }
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 15s linear infinite;
+}
