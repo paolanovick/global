@@ -6,7 +6,8 @@ export default function AutoScrollRow({
   direction = "left",
   className = "",
 }) {
-  const double = [...items, ...items]; // duplicamos para loop continuo
+  // duplicamos los items para crear loop continuo
+  const double = [...items, ...items];
   const animClass = direction === "left" ? "scroll-left" : "scroll-right";
 
   return (
