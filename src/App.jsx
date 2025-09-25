@@ -7,18 +7,18 @@ import Footer from "./components/Footer";
 
 // Datos de las filas de tarjetas
 const row1 = [
-  { title: "Ski", color: "bg-blue-500" },
-  { title: "Tenis", color: "bg-red-500" },
-  { title: "F1", color: "bg-yellow-500" },
-  { title: "Futbol", color: "bg-green-500" },
+  { title: "Ski", colorClass: "bg-blue-500 text-white" },
+  { title: "Tenis", colorClass: "bg-red-500 text-white" },
+  { title: "F1", colorClass: "bg-yellow-500 text-black" },
+  { title: "Futbol", colorClass: "bg-green-500 text-white" },
 ];
 
 const row2 = [
-  { title: "Egresados", color: "bg-pink-300" },
-  { title: "Parejas", color: "bg-purple-300" },
-  { title: "Solos", color: "bg-teal-300" },
-  { title: "Solas", color: "bg-orange-300" },
-  { title: "Amigos", color: "bg-lime-300" },
+  { title: "Egresados", colorClass: "bg-pink-300 text-gray-800" },
+  { title: "Parejas", colorClass: "bg-purple-300 text-white" },
+  { title: "Solos", colorClass: "bg-teal-300 text-white" },
+  { title: "Solas", colorClass: "bg-orange-300 text-white" },
+  { title: "Amigos", colorClass: "bg-lime-300 text-gray-800" },
 ];
 
 const row3 = row1; // repetir primer motivo
