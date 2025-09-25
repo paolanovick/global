@@ -1,4 +1,3 @@
-// ButtonSidebar.jsx
 import React from "react";
 import {
   FiActivity,
@@ -28,31 +27,30 @@ export default function ButtonSidebar() {
   const allButtons = [...group1, ...group2];
 
   const buttonIcons = [
-    <GiSkier size={28} />, // Ski
-    <GiTennisRacket size={28} />, // Tenis
-    <FiActivity size={28} />, // F1
-    <FiStar size={28} />, // Futbol
-    <FiUsers size={28} />, // Egresados
-    <FiHeart size={28} />, // Parejas
-    <FiUser size={28} />, // Solos
-    <FiSmile size={28} />, // Solas
-    <FiUsers size={28} />, // Amigos
+    <GiSkier size={28} />,
+    <GiTennisRacket size={28} />,
+    <FiActivity size={28} />,
+    <FiStar size={28} />,
+    <FiUsers size={28} />,
+    <FiHeart size={28} />,
+    <FiUser size={28} />,
+    <FiSmile size={28} />,
+    <FiUsers size={28} />,
   ];
 
   const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
 
-  const buttonHeight = 96; // px
-  const imageHeight = buttonHeight * 3 + 16; // 3 botones + gap
+  const buttonHeight = 96;
+  const imageHeight = buttonHeight * 3 + 16;
 
   return (
     <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
       {/* Botones izquierda */}
       <div className="flex flex-col gap-4 md:w-1/4">
         {allButtons.map((name, idx) => {
-          // Tomamos los colores del array pastelColors
           const colors = pastelColors[idx % pastelColors.length].split(" ");
           const fromColor = colors[0];
-          const toColor = colors[2] || colors[1]; // fallback por si no hay 3 partes
+          const toColor = colors[2] || colors[1];
 
           return (
             <a
