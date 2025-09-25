@@ -1,11 +1,14 @@
 import React from "react";
 import {
   FaSkiing,
-  FaTennisBall,
+  FaTableTennis,
   FaFlagCheckered,
   FaFutbol,
+  FaUsers,
+  FaHeart,
+  FaUser,
 } from "react-icons/fa";
-import { FaUserGraduate, FaHeart, FaUser, FaUsers } from "react-icons/fa6";
+import { FaUserGraduate } from "react-icons/fa6";
 
 const pastelColors = [
   "from-pink-200 to-pink-300",
@@ -29,7 +32,7 @@ export default function ButtonSidebar() {
   // Íconos asignados
   const iconMap = {
     Ski: <FaSkiing className="w-8 h-8 text-gray-700" />,
-    Tenis: <FaTennisBall className="w-8 h-8 text-green-600" />,
+    Tenis: <FaTableTennis className="w-8 h-8 text-green-600" />,
     F1: <FaFlagCheckered className="w-8 h-8 text-black" />,
     Futbol: <FaFutbol className="w-8 h-8 text-green-700" />,
     Egresados: <FaUserGraduate className="w-8 h-8 text-purple-600" />,
@@ -39,7 +42,6 @@ export default function ButtonSidebar() {
     Amigos: <FaUsers className="w-8 h-8 text-blue-600" />,
   };
 
-  // Altura doble de antes
   const buttonHeight = 96; // px
   const imageHeight = buttonHeight * 3; // 3 botones apilados
 
@@ -51,7 +53,7 @@ export default function ButtonSidebar() {
           <a
             key={idx}
             href="#"
-            className={`flex items-center w-full h-24 rounded-full overflow-hidden shadow-lg transform transition hover:scale-105`}
+            className="flex items-center w-full h-24 rounded-full overflow-hidden shadow-lg transform transition hover:scale-105"
             style={{
               background: `linear-gradient(to right, var(--tw-gradient-stops))`,
               "--tw-gradient-from":
