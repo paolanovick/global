@@ -1,16 +1,15 @@
 import React from "react";
 
-// Colores pastel para los botones
 const pastelColors = [
-  "bg-pink-200",
-  "bg-blue-200",
-  "bg-green-200",
-  "bg-yellow-200",
-  "bg-purple-200",
-  "bg-orange-200",
-  "bg-teal-200",
-  "bg-lime-200",
-  "bg-rose-200",
+  "from-pink-200 to-pink-300",
+  "from-blue-200 to-blue-300",
+  "from-green-200 to-green-300",
+  "from-yellow-200 to-yellow-300",
+  "from-purple-200 to-purple-300",
+  "from-orange-200 to-orange-300",
+  "from-teal-200 to-teal-300",
+  "from-lime-200 to-lime-300",
+  "from-rose-200 to-rose-300",
 ];
 
 export default function ButtonSidebar() {
@@ -20,24 +19,35 @@ export default function ButtonSidebar() {
 
   const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
 
-  // Altura de cada botón para calcular altura de la imagen
-  const buttonHeight = 48; // px aprox (Tailwind py-2 = 0.5rem * 2 + font)
-  const imageHeight = buttonHeight * 3; // cada imagen = altura de 3 botones
+  // Altura doble de antes
+  const buttonHeight = 96; // px
+  const imageHeight = buttonHeight * 3; // 3 botones apilados
 
   return (
     <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
       {/* Botones a la izquierda */}
-      <div className="flex flex-col gap-3 md:w-1/4">
+      <div className="flex flex-col gap-4 md:w-1/4">
         {allButtons.map((name, idx) => (
           <a
             key={idx}
             href="#"
-            className={`flex items-center justify-between text-gray-800 font-semibold px-6 py-2 rounded-full shadow-sm transition-all duration-200 ${
-              pastelColors[idx % pastelColors.length]
-            }`}
+            className={`flex items-center w-full h-24 rounded-full overflow-hidden shadow-lg transform transition hover:scale-105`}
+            style={{
+              background: `linear-gradient(to right, var(--tw-gradient-stops))`,
+              "--tw-gradient-from":
+                pastelColors[idx % pastelColors.length].split(" ")[0],
+              "--tw-gradient-to":
+                pastelColors[idx % pastelColors.length].split(" ")[2],
+            }}
           >
-            <span>{name}</span>
-            <img src="/circuito.png" alt="icon" className="w-5 h-5 ml-2" />
+            {/* Círculo al inicio */}
+            <div className="flex items-center justify-center w-20 h-full bg-white">
+              <img src="/circuito.png" alt="icon" className="w-10 h-10" />
+            </div>
+            {/* Texto */}
+            <span className="ml-4 text-lg font-semibold text-gray-800">
+              {name}
+            </span>
           </a>
         ))}
       </div>
