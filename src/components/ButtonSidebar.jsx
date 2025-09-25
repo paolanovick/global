@@ -20,6 +20,10 @@ export default function ButtonSidebar() {
 
   const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
 
+  // Altura de cada botón para calcular altura de la imagen
+  const buttonHeight = 48; // px aprox (Tailwind py-2 = 0.5rem * 2 + font)
+  const imageHeight = buttonHeight * 3; // cada imagen = altura de 3 botones
+
   return (
     <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
       {/* Botones a la izquierda */}
@@ -28,7 +32,7 @@ export default function ButtonSidebar() {
           <a
             key={idx}
             href="#"
-            className={`flex items-center justify-between text-gray-800 font-semibold px-4 py-2 rounded-full shadow-sm transition-all duration-200 ${
+            className={`flex items-center justify-between text-gray-800 font-semibold px-6 py-2 rounded-full shadow-sm transition-all duration-200 ${
               pastelColors[idx % pastelColors.length]
             }`}
           >
@@ -38,14 +42,15 @@ export default function ButtonSidebar() {
         ))}
       </div>
 
-      {/* Imágenes a la derecha, cubriendo el espacio restante */}
-      <div className="flex-1 flex flex-col gap-2">
+      {/* Imágenes a la derecha */}
+      <div className="flex flex-col gap-2 md:w-3/4">
         {rightImages.map((src, idx) => (
           <img
             key={idx}
             src={src}
             alt={`right-${idx}`}
-            className="w-full h-1/3 object-cover rounded-lg shadow-md"
+            className="w-full object-cover rounded-lg shadow-md"
+            style={{ height: `${imageHeight}px` }}
           />
         ))}
       </div>
