@@ -82,5 +82,5 @@ backdrop-filter: blur(3px);
 .animate-marquee {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee 15s linear infinite;
+  animation: marquee 18s linear infinite;
 }
