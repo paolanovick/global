@@ -1,0 +1,76 @@
+/* eslint-disable */
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* --- Estilos personalizados para animaciones de fila continua --- */
+.scrolling-wrapper {
+overflow: hidden;
+width: 100%;
+}
+
+
+.scrolling-content {
+display: flex;
+gap: 1rem;
+align-items: center;
+}
+
+
+/* Animación: desplaza la copia 0 -> -50% (porque el contenido está duplicado para loop) */
+@keyframes scroll-left {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+
+.scroll-left {
+animation: scroll-left 22s linear infinite;
+}
+
+
+/* Para invertir velocidad/dirección simplemente usar animation-direction: reverse */
+.scroll-right {
+animation: scroll-left 22s linear infinite reverse;
+}
+
+
+/* Ajustes de tarjeta */
+.card-fixed {
+min-width: 220px; /* ancho fijo para tarjetas */
+height: 140px;
+border-radius: 0.75rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+box-shadow: 0 6px 18px rgba(10,10,10,0.08);
+}
+
+
+/* Fondo sutil de la página */
+.body-bg {
+background-image: radial-gradient(circle at 10% 20%, rgba(59,130,246,0.03), transparent 10%),
+radial-gradient(circle at 80% 70%, rgba(234,88,12,0.02), transparent 15%);
+}
+
+
+/* Hero overlay logo */
+.hero-logo {
+backdrop-filter: blur(3px);
+background: rgba(255,255,255,0.2);
+border-radius: 9999px;
+padding: 6px;
+-webkit-backdrop-filter: blur(3px);
+backdrop-filter: blur(3px);
+
+}
+
+
+/* Estilos responsivos: reducir ancho de tarjeta en pantallas pequeñas */
+@media (max-width: 640px) {
+.card-fixed { min-width: 160px; height: 110px; }
+}
