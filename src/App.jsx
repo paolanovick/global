@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import HeroCarousel from "./components/HeroCarousel.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ButtonSidebar from "./components/ButtonSidebar.jsx";
+import Card from "./Card"; 
 
 // Tu Card original
 function Card({ title, colorClass = "bg-gray-200 text-gray-800" }) {
@@ -24,7 +25,7 @@ function AllSeasonsCards() {
 
   // Reemplaza con tu URL real de n8n
   const N8N_WEBHOOK_URL =
-    "https://tu-n8n-instance.com/webhook/allseasons-packages";
+     const N8N_WEBHOOK_URL = "http://167.172.31.249:5678/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
@@ -157,7 +158,9 @@ export default function App() {
         <div className="w-full p-4 bg-gray-50">
           <ButtonSidebar />
         </div>
-
+        <div className="w-full p-4 bg-white">
+          <AllSeasonsCards />
+        </div>
         {/* Cards de AllSeasons - NUEVO */}
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
