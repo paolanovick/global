@@ -47,35 +47,12 @@ export default function ButtonSidebar() {
 
   return (
     <div className="w-full overflow-hidden relative">
-      {/* Carrusel horizontal */}
       <div className="flex gap-4 animate-scroll whitespace-nowrap">
-        {allButtons.map((name, idx) => {
+        {allButtons.concat(allButtons).map((name, idx) => {
           const colors = pastelColors[idx % pastelColors.length].split(" ");
-          const fromColor = colors[0];
-          const toColor = colors[1];
-
           return (
             <a
               key={idx}
-              href="#"
-              className={`flex items-center h-12 px-4 rounded-full bg-gradient-to-r ${fromColor} ${toColor} text-white font-medium min-w-max`}
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-gray-600 mr-2">
-                {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
-                  className: "w-5 h-5",
-                })}
-              </div>
-              {name}
-            </a>
-          );
-        })}
-
-        {/* Duplicamos los botones para efecto infinito */}
-        {allButtons.map((name, idx) => {
-          const colors = pastelColors[idx % pastelColors.length].split(" ");
-          return (
-            <a
-              key={"dup-" + idx}
               href="#"
               className={`flex items-center h-12 px-4 rounded-full bg-gradient-to-r ${colors[0]} ${colors[1]} text-white font-medium min-w-max`}
             >
@@ -90,7 +67,6 @@ export default function ButtonSidebar() {
         })}
       </div>
 
-      {/* Animación con Tailwind + keyframes */}
       <style jsx>{`
         @keyframes scroll {
           0% {
