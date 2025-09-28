@@ -43,11 +43,15 @@ export default function ButtonSidebar() {
     <FiUser size={28} />,
     <FiSmile size={28} />,
     <FiUsers size={28} />,
+    <FiHeart size={28} />,
+    <FiUser size={28} />,
+    <FiSmile size={28} />,
+    <FiUsers size={28} />,
   ];
 
   return (
     <div className="w-full overflow-hidden relative">
-      <div className="flex gap-4 animate-scroll whitespace-nowrap">
+      <div className="flex gap-6 animate-scroll whitespace-nowrap">
         {allButtons.concat(allButtons).map((name, idx) => {
           const colors = pastelColors[idx % pastelColors.length].split(" ");
           return (
