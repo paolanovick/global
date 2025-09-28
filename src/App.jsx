@@ -1,63 +1,38 @@
-import React from "react";
-import Navbar from "./components/Navbar";
-import HeroCarousel from "./components/HeroCarousel";
-import ButtonSidebar from "./components/ButtonSidebar";
-import AutoScrollRow from "./components/AutoScrollRow";
-import Footer from "./components/Footer";
+import React, { useRef } from "react";
+import HeroCarousel from "./HeroCarousel";
+import Navbar from "./Navbar";
+import ButtonSidebar from "./ButtonSidebar";
 
-// Datos de las filas de tarjetas
-const row1 = [
-  { title: "Ski", colorClass: "bg-blue-500 text-white" },
-  { title: "Tenis", colorClass: "bg-red-500 text-white" },
-  { title: "F1", colorClass: "bg-yellow-500 text-black" },
-  { title: "Futbol", colorClass: "bg-green-500 text-white" },
-];
+export default function App() {
+  const nextSectionRef = useRef(null);
 
-const row2 = [
-  { title: "Egresados", colorClass: "bg-pink-300 text-gray-800" },
-  { title: "Parejas", colorClass: "bg-purple-300 text-white" },
-  { title: "Solos", colorClass: "bg-teal-300 text-white" },
-  { title: "Solas", colorClass: "bg-orange-300 text-white" },
-  { title: "Amigos", colorClass: "bg-lime-300 text-gray-800" },
-];
+  const scrollToNext = () => {
+    if (nextSectionRef.current) {
+      nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-const row3 = row1; // repetir primer motivo
-
-function App() {
   return (
-    <div className="min-h-screen body-bg flex flex-col">
-      <Navbar />
+    <div className="w-full">
+      {/* Primera pantalla */}
+      <HeroCarousel onClick={scrollToNext} />
 
-      <main className="w-full flex-1">
-        <HeroCarousel />
-        {/* Franja con texto animado */}
-        <div className="w-full bg-gray-50 border-y border-gray-200 overflow-hidden shadow-sm">
-          <div className="h-16 flex items-center">
-            <p className="animate-marquee text-gray-700 text-lg font-semibold tracking-wide">
-              Lorem ipsum dolor sit amet • Consectetur adipiscing elit • Vivamus
-              lacinia odio • Cras venenatis euismod malesuada
-            </p>
-          </div>
+      {/* Segunda sección */}
+      <div ref={nextSectionRef} className="min-h-screen bg-gray-100">
+        <Navbar />
+        <div className="flex">
+          {/* Sidebar */}
+          <aside className="w-1/4 p-4">
+            <ButtonSidebar />
+          </aside>
+
+          {/* Contenido principal */}
+          <main className="flex-1 p-8">
+            <h2 className="text-3xl font-bold mb-4">Contenido principal</h2>
+            <p>Aquí va el contenido de la página...</p>
+          </main>
         </div>
-        {/* Botones tipo sidebar debajo del carousel */}
-        <ButtonSidebar />
-
-        {/* Renglones de tarjetas */}
-        <section className="container mx-auto mt-8 px-4 space-y-8">
-          {/* Renglon 1: scroll hacia la izquierda */}
-          <AutoScrollRow items={row1} direction="left" />
-
-          {/* Renglon 2: scroll hacia la derecha (inverso) */}
-          <AutoScrollRow items={row2} direction="right" />
-
-          {/* Renglon 3: repetir primer motivo */}
-          <AutoScrollRow items={row3} direction="left" />
-        </section>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 }
-
-export default App;

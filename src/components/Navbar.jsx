@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Navbar() {
-  return (
-    <header className="w-full bg-white/80 backdrop-blur sticky top-0 z-30 border-b">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="logo"
-            className="w-10 h-10 object-contain"
-          />
-          <span className="font-bold text-lg">Global</span>
-        </div>
+  const [scrolled, setScrolled] = useState(false);
 
-        <nav className="hidden md:flex gap-6 text-sm font-medium">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`w-full sticky top-0 z-50 transition-all border-b ${
+        scrolled ? "bg-white/90 backdrop-blur shadow" : "bg-white/0"
+      }`}
+    >
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="text-xl font-bold">Global</div>
+
+        <nav className="flex gap-4">
           <a href="#" className="hover:underline">
             Inicio
           </a>
@@ -27,15 +34,6 @@ export default function Navbar() {
             Contacto
           </a>
         </nav>
-
-        <div className="flex items-center gap-3">
-          <button className="px-3 py-1 rounded-md border text-sm">
-            Iniciar
-          </button>
-          <button className="px-3 py-1 rounded-md bg-blue-600 text-white text-sm">
-            Reservar
-          </button>
-        </div>
       </div>
     </header>
   );
