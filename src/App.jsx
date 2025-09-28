@@ -2,20 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import HeroCarousel from "./components/HeroCarousel.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ButtonSidebar from "./components/ButtonSidebar.jsx";
-import Card from "./Card.jsx"; 
+import Card from "./components/Card.jsx"; 
 
-// Tu Card original
-function Card({ title, colorClass = "bg-gray-200 text-gray-800" }) {
-  return (
-    <div
-      className={`card-fixed ${colorClass} flex-shrink-0 p-4 rounded-lg shadow-md m-2 min-w-64`}
-    >
-      <div className="text-center px-4">
-        <div className="text-lg md:text-xl">{title}</div>
-      </div>
-    </div>
-  );
-}
+
 
 // Componente para las 5 cards de AllSeasons
 function AllSeasonsCards() {
@@ -25,7 +14,7 @@ function AllSeasonsCards() {
 
   // Reemplaza con tu URL real de n8n
 
-     const N8N_WEBHOOK_URL ="/api/n8n/webhook/allseason-package";";
+   const N8N_WEBHOOK_URL = "/api/n8n/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
