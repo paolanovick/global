@@ -14,8 +14,9 @@ function AllSeasonsCards() {
 
   // Reemplaza con tu URL real de n8n
 
- const N8N_WEBHOOK_URL =
-   "http://api.agenciatripnow.site/webhook/allseason-package";
+const N8N_WEBHOOK_URL =
+  "https://api.agenciatripnow.site/webhook/allseason-package";
+
 
   useEffect(() => {
     fetchPackages();
