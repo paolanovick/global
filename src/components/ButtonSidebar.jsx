@@ -21,6 +21,7 @@ export default function ButtonSidebar() {
     "Solas",
     "Amigos",
   ];
+
   const buttonIcons = [
     <GiSkier size={28} />,
     <GiTennisRacket size={28} />,
@@ -58,10 +59,10 @@ export default function ButtonSidebar() {
           <a
             key={idx}
             href="#"
-            className="flex items-center h-12 px-6 rounded-full bg-white/90 border border-gray-300 text-gray-800 font-semibold min-w-max shadow-sm hover:shadow-md transition"
-            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.1)" }}
+            className="flex items-center h-14 px-6 rounded-full bg-gradient-to-b from-white to-gray-200 border border-gray-300 shadow-inner text-gray-800 font-semibold min-w-max transition-transform hover:translate-y-[-2px]"
+            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.15)" }}
           >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-700 mr-2">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 text-gray-700 mr-2 shadow-inner">
               {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
                 className: "w-5 h-5",
               })}
