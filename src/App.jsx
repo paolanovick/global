@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
-import HeroCarousel from "./HeroCarousel";
-import Navbar from "./Navbar";
-import ButtonSidebar from "./ButtonSidebar";
+
+// Importa los componentes desde la carpeta "components"
+import HeroCarousel from "./components/HeroCarousel.jsx";
+import Navbar from "./components/Navbar.jsx";
+import ButtonSidebar from "./components/ButtonSidebar.jsx";
 
 export default function App() {
   const nextSectionRef = useRef(null);
