@@ -14,7 +14,8 @@ function AllSeasonsCards() {
 
   // Reemplaza con tu URL real de n8n
 
-   const N8N_WEBHOOK_URL = "/api/n8n/webhook/allseason-package";
+  const N8N_WEBHOOK_URL =
+    "http://167.172.31.249:5678/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
