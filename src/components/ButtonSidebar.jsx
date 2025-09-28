@@ -51,7 +51,7 @@ export default function ButtonSidebar() {
 
   return (
     <div className="w-full overflow-hidden relative">
-      <div className="flex gap-6 animate-scroll whitespace-nowrap">
+      <div className="flex gap-8 animate-scroll whitespace-nowrap">
         {allButtons.concat(allButtons).map((name, idx) => {
           const colors = pastelColors[idx % pastelColors.length].split(" ");
           return (
@@ -82,7 +82,7 @@ export default function ButtonSidebar() {
         }
         .animate-scroll {
           display: inline-flex;
-          animation: scroll 20s linear infinite;
+          animation: scroll 30s linear infinite;
         }
       `}</style>
     </div>
