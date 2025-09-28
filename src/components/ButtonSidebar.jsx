@@ -22,10 +22,17 @@ const pastelColors = [
 ];
 
 export default function ButtonSidebar() {
-  const group1 = ["Ski", "Tenis", "F1", "Futbol"];
-  const group2 = ["Egresados", "Parejas", "Solos", "Solas", "Amigos"];
-  const allButtons = [...group1, ...group2];
-
+  const allButtons = [
+    "Ski",
+    "Tenis",
+    "F1",
+    "Futbol",
+    "Egresados",
+    "Parejas",
+    "Solos",
+    "Solas",
+    "Amigos",
+  ];
   const buttonIcons = [
     <GiSkier size={28} />,
     <GiTennisRacket size={28} />,
@@ -38,15 +45,10 @@ export default function ButtonSidebar() {
     <FiUsers size={28} />,
   ];
 
-  const rightImages = ["/hero1.png", "/hero2.png", "/hero3.png"];
-
-  const buttonHeight = 96;
-  const imageHeight = buttonHeight * 3 + 16;
-
   return (
-    <section className="flex flex-col md:flex-row mt-8 gap-6 px-4 md:px-16">
-      {/* Botones izquierda */}
-      <div className="flex flex-col gap-4 md:w-1/4">
+    <div className="w-full overflow-hidden relative">
+      {/* Carrusel horizontal */}
+      <div className="flex gap-4 animate-scroll whitespace-nowrap">
         {allButtons.map((name, idx) => {
           const colors = pastelColors[idx % pastelColors.length].split(" ");
           const fromColor = colors[0];
@@ -56,40 +58,53 @@ export default function ButtonSidebar() {
             <a
               key={idx}
               href="#"
-              className="flex items-center max-w-[220px] h-12 px-4 rounded-full border border-gray-200/60 bg-white shadow-sm transition hover:shadow-md hover:scale-[1.01]"
+              className={`flex items-center h-12 px-4 rounded-full bg-gradient-to-r ${fromColor} ${toColor} text-white font-medium min-w-max`}
             >
-              {/* círculo blanco con ícono */}
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 border border-gray-200 shadow-sm">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-gray-600 mr-2">
                 {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
-                  className: "text-gray-600 w-4 h-4",
+                  className: "w-5 h-5",
                 })}
               </div>
+              {name}
+            </a>
+          );
+        })}
 
-              {/* texto */}
-              <span className="ml-3 text-sm font-medium text-gray-700">
-                {name}
-              </span>
+        {/* Duplicamos los botones para efecto infinito */}
+        {allButtons.map((name, idx) => {
+          const colors = pastelColors[idx % pastelColors.length].split(" ");
+          return (
+            <a
+              key={"dup-" + idx}
+              href="#"
+              className={`flex items-center h-12 px-4 rounded-full bg-gradient-to-r ${colors[0]} ${colors[1]} text-white font-medium min-w-max`}
+            >
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-gray-600 mr-2">
+                {React.cloneElement(buttonIcons[idx % buttonIcons.length], {
+                  className: "w-5 h-5",
+                })}
+              </div>
+              {name}
             </a>
           );
         })}
       </div>
 
-      {/* Imágenes derecha */}
-      <div className="flex flex-col gap-2 md:w-3/4">
-        {rightImages.map((src, idx) => (
-          <div
-            key={idx}
-            className="w-full bg-gray-200 rounded-lg shadow-md"
-            style={{ height: `${imageHeight}px` }}
-          >
-            <img
-              src={src}
-              alt={`right-${idx}`}
-              className="w-full h-full object-cover rounded-lg"
-            />
-          </div>
-        ))}
-      </div>
-    </section>
+      {/* Animación con Tailwind + keyframes */}
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          display: inline-flex;
+          animation: scroll 20s linear infinite;
+        }
+      `}</style>
+    </div>
   );
 }
