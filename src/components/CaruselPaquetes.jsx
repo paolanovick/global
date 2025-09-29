@@ -22,6 +22,8 @@ export default function CaruselPaquetes() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+              Usuario: "paonovick10@gmail.com",
+              Clave: "cb9daff9-6079-45fc-be02-23e86d8e1b37",
               ProductoCodigo: productoCodigo,
             }),
           }
@@ -34,7 +36,7 @@ export default function CaruselPaquetes() {
         }
 
         const data = await res.json();
-        console.log("Respuesta completa:", data);
+        console.log("Respuesta completa:", JSON.stringify(data, null, 2));
 
         setPaquete(data);
       } catch (err) {
