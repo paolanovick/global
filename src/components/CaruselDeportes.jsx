@@ -3,11 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function CaruselDeportes() {
  const slides = [
-   { src: "https://picsum.photos/id/1018/1000/600", title: "Ski" },
-   { src: "https://picsum.photos/id/1015/1000/600", title: "Fórmula 1" },
-   { src: "https://picsum.photos/id/1019/1000/600", title: "Fútbol" },
-   { src: "https://picsum.photos/id/1021/1000/600", title: "Ciclismo" },
-   { src: "https://picsum.photos/id/1024/1000/600", title: "Basket" },
+   {
+     src: "https://drive.google.com/file/d/1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT/view?usp=sharing",
+     title: "Ski",
+   },
+   {
+     src: "https://drive.google.com/file/d/11fma9SZSMQsw0UFvEJxzDa_6zF72Xn_c/view?usp=sharing",
+     title: "Fórmula 1",
+   },
+   {
+     src: "https://drive.google.com/file/d/1nUWkvf9iHJeaovkgb8WrcOWqQQZatzDY/view?usp=sharing",
+     title: "Fútbol",
+   },
+   {
+     src: "https://drive.google.com/file/d/1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs/view?usp=sharing",
+     title: "Ciclismo",
+     },
+   
  ];
 
 
