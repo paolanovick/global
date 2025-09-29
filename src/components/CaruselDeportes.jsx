@@ -8,7 +8,7 @@ export default function CaruselDeportes() {
      title: "Ski",
    },
    {
-     src: "https://drive.google.com/file/d/11fma9SZSMQsw0UFvEJxzDa_6zF72Xn_c/view?usp=sharing",
+     src: "https://drive.google.com/uc?id=1S3OsXYNdvoe7f7UI4B7_JkrUowGibD-X:",
      title: "Fórmula 1",
    },
    {
