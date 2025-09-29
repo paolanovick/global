@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar.jsx";
 import ButtonSidebar from "./components/ButtonSidebar.jsx";
 import Card from "./components/Card.jsx";
 import ContactForm from "./components/ContactForm.jsx";
-import CaruselDeportes from "./components/CaruselDeportes";
+import CaruselDeportes from "./components/CaruselDeportes´.jsx";
 
 // Componente para las cards de AllSeasons
 function AllSeasonsCards() {
