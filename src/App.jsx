@@ -98,12 +98,14 @@ function AllSeasonsCards() {
         </button>
       </div>
 
-      <div className="flex overflow-x-auto pb-4 px-2 space-x-0">
+      <div className="flex overflow-x-auto pb-4 px-2 space-x-4">
         {packages.length > 0 ? (
           packages.map((pkg, index) => (
             <Card
               key={pkg.id || index}
-              title={`${pkg.title} - ${pkg.price}`}
+              title={pkg.title}
+              image={pkg.imagen_principal} // agregamos la imagen
+              price={pkg.price} // agregamos el precio
               colorClass={getColorByDestination(pkg.title)}
             />
           ))
