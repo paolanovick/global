@@ -22,7 +22,12 @@ function AllSeasonsCards() {
       setLoading(true);
       setError(null);
 
-      const response = await fetch(N8N_WEBHOOK_URL);
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`Error ${response.status}: ${response.statusText}`);
