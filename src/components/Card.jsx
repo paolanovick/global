@@ -22,8 +22,8 @@ function Card({ title, image, galeria = [], price, colorClass }) {
   };
 
   return (
-    <div className="flex-shrink-0 w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative h-48 overflow-hidden group">
+    <div className="flex-shrink-0 w-full sm:w-80 md:w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 mx-auto">
+      <div className="relative h-48 sm:h-56 md:h-48 overflow-hidden group">
         <img
           src={
             allImages[currentImageIndex] ||
@@ -42,7 +42,7 @@ function Card({ title, image, galeria = [], price, colorClass }) {
             {/* Botón Anterior */}
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
               aria-label="Imagen anterior"
             >
               <svg
@@ -63,7 +63,7 @@ function Card({ title, image, galeria = [], price, colorClass }) {
             {/* Botón Siguiente */}
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"
               aria-label="Imagen siguiente"
             >
               <svg
@@ -82,7 +82,7 @@ function Card({ title, image, galeria = [], price, colorClass }) {
             </button>
 
             {/* Indicadores de imagen */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
               {allImages.map((_, index) => (
                 <button
                   key={index}
