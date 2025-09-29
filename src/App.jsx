@@ -149,10 +149,8 @@ export default function App() {
         <div className="w-full p-4 bg-gray-50">
           <ButtonSidebar />
         </div>
-        <div className="w-full p-4 bg-white">
-          <AllSeasonsCards />
-        </div>
-        {/* Cards de AllSeasons - NUEVO */}
+
+        {/* Cards de AllSeasons - solo un fetch */}
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
         </div>
