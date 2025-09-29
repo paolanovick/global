@@ -182,7 +182,7 @@ export default function App() {
           <AllSeasonsCards />
         </div>
         <div className="App">
-          <h1 className="text-3xl text-center my-4">Detalle del Paquete</h1>
+          <h1 className="text-3xl text-center my-4">Detalle del Paquete ATLAS</h1>
           <CaruselPaquetes />
         </div>
 
