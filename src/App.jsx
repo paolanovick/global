@@ -5,39 +5,40 @@ import ButtonSidebar from "./components/ButtonSidebar.jsx";
 import Card from "./components/Card.jsx";
 import ContactForm from "./components/ContactForm.jsx";
 
-// Componente para las 5 cards de AllSeasons
+// Componente para las cards de AllSeasons
 function AllSeasonsCards() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-const N8N_WEBHOOK_URL =
-  "https://api.agenciatripnow.site/webhook/allseason-package";
+  const N8N_WEBHOOK_URL =
+    "https://api.agenciatripnow.site/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
   }, []);
 
-const fetchPackages = async () => {
-  try {
-    setLoading(true);
-    setError(null);
+  const fetchPackages = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-    const response = await fetch(N8N_WEBHOOK_URL); // GET por defecto
+      const response = await fetch(N8N_WEBHOOK_URL);
 
-    if (!response.ok) {
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      // Traer 10 paquetes para las dos filas
+      const processedData = data.packages ? data.packages.slice(0, 10) : [];
+      setPackages(processedData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-
-    const data = await response.json();
-    const processedData = data.packages ? data.packages.slice(0, 5) : [];
-    setPackages(processedData);
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   const getColorByDestination = (destino) => {
     const colors = {
@@ -49,6 +50,8 @@ const fetchPackages = async () => {
       Ushuaia: "bg-indigo-600 text-white",
       Córdoba: "bg-pink-600 text-white",
       "Mar del Plata": "bg-teal-600 text-white",
+      Iguazú: "bg-emerald-600 text-white",
+      Cafayate: "bg-orange-600 text-white",
     };
 
     for (const [key, color] of Object.entries(colors)) {
@@ -58,6 +61,10 @@ const fetchPackages = async () => {
     }
     return "bg-gray-600 text-white";
   };
+
+  // Dividir en dos filas
+  const firstRow = packages.slice(0, 5);
+  const secondRow = packages.slice(5, 10);
 
   if (loading) {
     return (
@@ -90,26 +97,47 @@ const fetchPackages = async () => {
     <div className="w-full">
       <div className="flex justify-between items-center mb-4 px-4">
         <h2 className="text-xl font-bold text-gray-800">Destinos Destacados</h2>
-       
       </div>
 
-      <div className="flex overflow-x-auto pb-4 px-2 space-x-4">
-        {packages.length > 0 ? (
-          packages.map((pkg, index) => (
-            <Card
-              key={pkg.id || index}
-              title={pkg.titulo}
-              image={pkg.imagen_principal} // viene así en tu API
-              price={`${pkg.tipo_moneda} - ${pkg.cant_noches} noches`}
-              colorClass={getColorByDestination(pkg.ciudad)} // usamos ciudad en lugar de destino
-            />
-          ))
-        ) : (
-          <div className="flex justify-center w-full py-8">
-            <div className="text-gray-500">No hay paquetes disponibles</div>
-          </div>
-        )}
-      </div>
+      {/* Primera fila */}
+      {firstRow.length > 0 && (
+        <div className="flex overflow-x-auto pb-4 px-2 sm:px-4 gap-4 snap-x snap-mandatory mb-4">
+          {firstRow.map((pkg, index) => (
+            <div key={pkg.id || index} className="snap-center">
+              <Card
+                title={pkg.titulo}
+                image={pkg.imagen_principal}
+                galeria={pkg.galeria}
+                price={`${pkg.cant_noches} noches`}
+                colorClass={getColorByDestination(pkg.ciudad)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Segunda fila */}
+      {secondRow.length > 0 && (
+        <div className="flex overflow-x-auto pb-4 px-2 sm:px-4 gap-4 snap-x snap-mandatory">
+          {secondRow.map((pkg, index) => (
+            <div key={pkg.id || `row2-${index}`} className="snap-center">
+              <Card
+                title={pkg.titulo}
+                image={pkg.imagen_principal}
+                galeria={pkg.galeria}
+                price={`${pkg.cant_noches} noches`}
+                colorClass={getColorByDestination(pkg.ciudad)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {packages.length === 0 && (
+        <div className="flex justify-center w-full py-8">
+          <div className="text-gray-500">No hay paquetes disponibles</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -142,6 +170,8 @@ export default function App() {
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
         </div>
+
+        {/* Formulario de contacto */}
         <div className="p-4 md:p-8 bg-gray-50">
           <ContactForm />
         </div>
