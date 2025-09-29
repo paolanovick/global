@@ -2,9 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import HeroCarousel from "./components/HeroCarousel.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ButtonSidebar from "./components/ButtonSidebar.jsx";
-import Card from "./components/Card.jsx"; 
-
-
+import Card from "./components/Card.jsx";
 
 // Componente para las 5 cards de AllSeasons
 function AllSeasonsCards() {
@@ -12,12 +10,8 @@ function AllSeasonsCards() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Reemplaza con tu URL real de n8n
-
-const N8N_WEBHOOK_URL =
-  "https://api.agenciatripnow.site/webhook/allseason-package";
-
-
+  const N8N_WEBHOOK_URL =
+    "https://api.agenciatripnow.site/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
@@ -35,10 +29,8 @@ const N8N_WEBHOOK_URL =
       }
 
       const data = await response.json();
-      // Tomar solo las primeras 5
-      const processedData = Array.isArray(data)
-        ? data.slice(0, 5).map((item) => item.json || item)
-        : [data].slice(0, 5);
+      // Tomar solo las primeras 5 entradas del array packages
+      const processedData = data.packages ? data.packages.slice(0, 5) : [];
       setPackages(processedData);
     } catch (err) {
       setError(err.message);
@@ -111,10 +103,8 @@ const N8N_WEBHOOK_URL =
           packages.map((pkg, index) => (
             <Card
               key={pkg.id || index}
-              title={`${pkg.destino || "Destino"}, ${
-                pkg.pais || "Argentina"
-              } - ${pkg.noches || "0"} noches`}
-              colorClass={getColorByDestination(pkg.destino)}
+              title={`${pkg.title} - ${pkg.price}`}
+              colorClass={getColorByDestination(pkg.title)}
             />
           ))
         ) : (
@@ -151,7 +141,7 @@ export default function App() {
           <ButtonSidebar />
         </div>
 
-        {/* Cards de AllSeasons - solo un fetch */}
+        {/* Cards de AllSeasons */}
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
         </div>
