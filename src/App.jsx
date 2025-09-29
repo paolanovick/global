@@ -10,8 +10,7 @@ function AllSeasonsCards() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const N8N_WEBHOOK_URL =
-    "https://api.agenciatripnow.site/webhook/allseason-package";
+ const N8N_WEBHOOK_URL = "http://167.172.31.249:5678/webhook/allseason-package";
 
   useEffect(() => {
     fetchPackages();
