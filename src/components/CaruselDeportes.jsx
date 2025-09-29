@@ -1,4 +1,3 @@
-// src/components/CaruselDeportes.jsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,7 +20,7 @@ export default function CaruselDeportes() {
       title: "Ciclismo",
     },
     {
-      src: "https://drive.google.com/uc?id=XXXXXXXXXXXXXXX", // link de Basket
+      src: "https://drive.google.com/uc?id=XXXXXXXXXXXXXXX", // basket
       title: "Basket",
     },
   ];
@@ -49,7 +48,7 @@ export default function CaruselDeportes() {
           exit={{ rotateY: -90, opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          {/* Overlay con gradiente */}
+          {/* Overlay + título */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center sm:items-end justify-center sm:justify-start px-4 sm:px-12 pb-6">
             <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg text-center sm:text-left">
               {slides[index].title}
