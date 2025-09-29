@@ -15,7 +15,7 @@ export default function CaruselPaquetes() {
       try {
         setLoading(true);
         const res = await fetch(
-          "http://167.172.31.249:5678/webhook/atlas-detalle",
+          "https://api.agenciatripnow.site/webhook/atlas-detalle",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
