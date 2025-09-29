@@ -89,12 +89,7 @@ const fetchPackages = async () => {
     <div className="w-full">
       <div className="flex justify-between items-center mb-4 px-4">
         <h2 className="text-xl font-bold text-gray-800">Destinos Destacados</h2>
-        <button
-          onClick={fetchPackages}
-          className="text-sm px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-        >
-          Actualizar
-        </button>
+       
       </div>
 
       <div className="flex overflow-x-auto pb-4 px-2 space-x-4">
