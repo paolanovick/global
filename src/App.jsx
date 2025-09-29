@@ -93,53 +93,57 @@ function AllSeasonsCards() {
     );
   }
 
-  return (
-    <div className="w-full">
-      <div className="flex justify-between items-center mb-4 px-4">
-        <h2 className="text-xl font-bold text-gray-800">Destinos Destacados</h2>
-      </div>
+ return (
+   <div className="w-full">
+     <div className="flex justify-between items-center mb-4 px-4">
+       <h2 className="text-xl font-bold text-gray-800">Destinos Destacados</h2>
+     </div>
 
-      {/* Primera fila */}
-      {firstRow.length > 0 && (
-        <div className="flex overflow-x-auto pb-4 px-2 sm:px-4 gap-4 snap-x snap-mandatory mb-4">
-          {firstRow.map((pkg, index) => (
-            <div key={pkg.id || index} className="snap-center">
-              <Card
-                title={pkg.titulo}
-                image={pkg.imagen_principal}
-                galeria={pkg.galeria}
-                price={`${pkg.cant_noches} noches`}
-                colorClass={getColorByDestination(pkg.ciudad)}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+     {/* Primera fila */}
+     {firstRow.length > 0 && (
+       <div className="w-full overflow-x-auto pb-4 mb-4">
+         <div className="flex gap-4 px-2 sm:px-4 md:justify-center md:flex-wrap lg:justify-center">
+           {firstRow.map((pkg, index) => (
+             <div key={pkg.id || index} className="flex-shrink-0">
+               <Card
+                 title={pkg.titulo}
+                 image={pkg.imagen_principal}
+                 galeria={pkg.galeria}
+                 price={`${pkg.cant_noches} noches`}
+                 colorClass={getColorByDestination(pkg.ciudad)}
+               />
+             </div>
+           ))}
+         </div>
+       </div>
+     )}
 
-      {/* Segunda fila */}
-      {secondRow.length > 0 && (
-        <div className="flex overflow-x-auto pb-4 px-2 sm:px-4 gap-4 snap-x snap-mandatory">
-          {secondRow.map((pkg, index) => (
-            <div key={pkg.id || `row2-${index}`} className="snap-center">
-              <Card
-                title={pkg.titulo}
-                image={pkg.imagen_principal}
-                galeria={pkg.galeria}
-                price={`${pkg.cant_noches} noches`}
-                colorClass={getColorByDestination(pkg.ciudad)}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+     {/* Segunda fila */}
+     {secondRow.length > 0 && (
+       <div className="w-full overflow-x-auto pb-4">
+         <div className="flex gap-4 px-2 sm:px-4 md:justify-center md:flex-wrap lg:justify-center">
+           {secondRow.map((pkg, index) => (
+             <div key={pkg.id || `row2-${index}`} className="flex-shrink-0">
+               <Card
+                 title={pkg.titulo}
+                 image={pkg.imagen_principal}
+                 galeria={pkg.galeria}
+                 price={`${pkg.cant_noches} noches`}
+                 colorClass={getColorByDestination(pkg.ciudad)}
+               />
+             </div>
+           ))}
+         </div>
+       </div>
+     )}
 
-      {packages.length === 0 && (
-        <div className="flex justify-center w-full py-8">
-          <div className="text-gray-500">No hay paquetes disponibles</div>
-        </div>
-      )}
-    </div>
-  );
+     {packages.length === 0 && (
+       <div className="flex justify-center w-full py-8">
+         <div className="text-gray-500">No hay paquetes disponibles</div>
+       </div>
+     )}
+   </div>
+ );
 }
 
 // Tu App principal actualizada
