@@ -103,10 +103,10 @@ function AllSeasonsCards() {
           packages.map((pkg, index) => (
             <Card
               key={pkg.id || index}
-              title={pkg.titulo} // 👉 el título viene como 'titulo'
-              image={pkg.imagen} // 👉 la imagen viene como 'imagen'
-              price={pkg.moneda + " " + pkg.noches + " noches"} // 👉 ejemplo: "Peso 5 noches"
-              colorClass={getColorByDestination(pkg.destino)} // 👉 destino para el color
+              title={pkg.titulo} // correcto: viene del XML como <titulo>
+              image={pkg.imagen} // correcto: tu parser lo llama "imagen"
+              price={`${pkg.moneda} - ${pkg.noches} noches`} // ejemplo: "Peso - 5 noches"
+              colorClass={getColorByDestination(pkg.destino)} // usar el campo 'destino'
             />
           ))
         ) : (
