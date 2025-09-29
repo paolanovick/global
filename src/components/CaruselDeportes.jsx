@@ -20,10 +20,7 @@ export default function CaruselDeportes() {
       src: "https://drive.google.com/uc?id=1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs",
       title: "Ciclismo",
     },
-    {
-      src: "https://drive.google.com/uc?id=TU_ID_DE_BASKET",
-      title: "Basket",
-    },
+   
   ];
 
   const [index, setIndex] = useState(0);

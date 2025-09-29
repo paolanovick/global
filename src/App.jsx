@@ -5,6 +5,7 @@ import ButtonSidebar from "./components/ButtonSidebar.jsx";
 import Card from "./components/Card.jsx";
 import ContactForm from "./components/ContactForm.jsx";
 import CaruselDeportes from "./components/CaruselDeportes.jsx";
+import CaruselPaquetes from "./components/CaruselPaquetes";
 
 // Componente para las cards de AllSeasons
 function AllSeasonsCards() {
@@ -179,6 +180,10 @@ export default function App() {
         {/* Cards de AllSeasons */}
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
+        </div>
+        <div className="App">
+          <h1 className="text-3xl text-center my-4">Detalle del Paquete</h1>
+          <CaruselPaquetes />
         </div>
 
         {/* Formulario de contacto */}
