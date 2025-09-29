@@ -1,10 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
-import HeroCarousel from "./components/HeroCarousel.jsx";
-import Navbar from "./components/Navbar.jsx";
-import ButtonSidebar from "./components/ButtonSidebar.jsx";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card.jsx";
 
-// Componente para las 5 cards de AllSeasons
 function AllSeasonsCards() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,8 +25,25 @@ function AllSeasonsCards() {
       }
 
       const data = await response.json();
-      // Tomar solo las primeras 5 entradas del array packages
-      const processedData = data.packages ? data.packages.slice(0, 5) : [];
+
+      // Mapear solo los primeros 5 paquetes del XML transformado por n8n
+      const processedData = data.packages
+        ? data.packages.slice(0, 5).map((pkg) => ({
+            id: pkg.id,
+            titulo: pkg.titulo,
+            destino: pkg.destino,
+            pais: pkg.pais,
+            hotel: pkg.hotel,
+            noches: pkg.noches,
+            vigencia_desde: pkg.vigencia_desde,
+            vigencia_hasta: pkg.vigencia_hasta,
+            imagen: pkg.imagen,
+            moneda: pkg.moneda,
+            url: pkg.url,
+            price: pkg.price || `${pkg.moneda} ${pkg.noches} noches`, // si no hay precio definido
+          }))
+        : [];
+
       setPackages(processedData);
     } catch (err) {
       setError(err.message);
@@ -103,10 +116,10 @@ function AllSeasonsCards() {
           packages.map((pkg, index) => (
             <Card
               key={pkg.id || index}
-              title={pkg.title}
-              image={pkg.imagen_principal} // agregamos la imagen
-              price={pkg.price} // agregamos el precio
-              colorClass={getColorByDestination(pkg.title)}
+              title={pkg.titulo}
+              image={pkg.imagen}
+              price={pkg.price}
+              colorClass={getColorByDestination(pkg.destino)}
             />
           ))
         ) : (
@@ -119,42 +132,4 @@ function AllSeasonsCards() {
   );
 }
 
-// Tu App principal actualizada
-export default function App() {
-  const nextSectionRef = useRef(null);
-
-  const scrollToNext = () => {
-    if (nextSectionRef.current) {
-      nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  return (
-    <div className="w-full">
-      {/* Hero full-screen */}
-      <HeroCarousel onClick={scrollToNext} />
-
-      {/* Segunda sección */}
-      <div ref={nextSectionRef} className="min-h-screen bg-gray-100">
-        <Navbar />
-
-        {/* Carrusel de botones full-width */}
-        <div className="w-full p-4 bg-gray-50">
-          <ButtonSidebar />
-        </div>
-
-        {/* Cards de AllSeasons */}
-        <div className="w-full p-4 bg-white">
-          <AllSeasonsCards />
-        </div>
-
-        {/* Resto del contenido de tu app */}
-        <div className="p-4">
-          <div className="text-center text-gray-600">
-            <p>Aquí puedes agregar más secciones de tu aplicación</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+export default AllSeasonsCards;
