@@ -176,7 +176,7 @@ export default function App() {
         </div>
 
         {/* Formulario de contacto */}
-        <div className="p-4 md:p-8 bg-gray-50">
+        <div className="w-full p-4 md:p-8">
           <ContactForm />
         </div>
 
