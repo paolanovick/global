@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CaruselDeportes() {
+  // Slides con links directos de Google Drive (asegurate que sean públicos)
   const slides = [
     {
       src: "https://drive.google.com/uc?id=1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT",
@@ -19,10 +20,15 @@ export default function CaruselDeportes() {
       src: "https://drive.google.com/uc?id=1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs",
       title: "Ciclismo",
     },
+    {
+      src: "https://drive.google.com/uc?id=TU_ID_DE_BASKET",
+      title: "Basket",
+    },
   ];
 
   const [index, setIndex] = useState(0);
 
+  // Cambia de slide automáticamente cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
