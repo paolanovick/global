@@ -3,6 +3,7 @@ import HeroCarousel from "./components/HeroCarousel.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ButtonSidebar from "./components/ButtonSidebar.jsx";
 import Card from "./components/Card.jsx";
+import ContactForm from "./components/ContactForm.jsx";
 
 // Componente para las 5 cards de AllSeasons
 function AllSeasonsCards() {
@@ -140,6 +141,9 @@ export default function App() {
         {/* Cards de AllSeasons */}
         <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
+        </div>
+        <div className="p-4 md:p-8 bg-gray-50">
+          <ContactForm />
         </div>
 
         {/* Resto del contenido de tu app */}

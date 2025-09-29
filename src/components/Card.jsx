@@ -22,7 +22,7 @@ function Card({ title, image, galeria = [], price, colorClass }) {
   };
 
   return (
-    <div className="flex-shrink-0 w-full sm:w-80 md:w-72 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 mx-auto">
+    <div className="flex-shrink-0 w-full sm:w-80 md:w-72 lg:w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       <div className="relative h-48 sm:h-56 md:h-48 overflow-hidden group">
         <img
           src={
