@@ -2,28 +2,14 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CaruselDeportes() {
-  const slides = [
-    {
-      src: "https://drive.google.com/uc?id=1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT",
-      title: "Ski",
-    },
-    {
-      src: "https://drive.google.com/uc?id=11fma9SZSMQsw0UFvEJxzDa_6zF72Xn_c",
-      title: "Fórmula 1",
-    },
-    {
-      src: "https://drive.google.com/uc?id=1nUWkvf9iHJeaovkgb8WrcOWqQQZatzDY",
-      title: "Fútbol",
-    },
-    {
-      src: "https://drive.google.com/uc?id=1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs",
-      title: "Ciclismo",
-    },
-    {
-      src: "https://drive.google.com/uc?id=XXXXXXXXXXXXXXX", // basket
-      title: "Basket",
-    },
-  ];
+ const slides = [
+   { src: "https://picsum.photos/id/1018/1000/600", title: "Ski" },
+   { src: "https://picsum.photos/id/1015/1000/600", title: "Fórmula 1" },
+   { src: "https://picsum.photos/id/1019/1000/600", title: "Fútbol" },
+   { src: "https://picsum.photos/id/1021/1000/600", title: "Ciclismo" },
+   { src: "https://picsum.photos/id/1024/1000/600", title: "Basket" },
+ ];
+
 
   const [index, setIndex] = useState(0);
 
