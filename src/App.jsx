@@ -17,32 +17,26 @@ function AllSeasonsCards() {
     fetchPackages();
   }, []);
 
-  const fetchPackages = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+const fetchPackages = async () => {
+  try {
+    setLoading(true);
+    setError(null);
 
-      const response = await fetch(N8N_WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    const response = await fetch(N8N_WEBHOOK_URL); // GET por defecto
 
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      // Tomar solo las primeras 5 entradas del array packages
-      const processedData = data.packages ? data.packages.slice(0, 5) : [];
-      setPackages(processedData);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
-  };
+
+    const data = await response.json();
+    const processedData = data.packages ? data.packages.slice(0, 5) : [];
+    setPackages(processedData);
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const getColorByDestination = (destino) => {
     const colors = {
