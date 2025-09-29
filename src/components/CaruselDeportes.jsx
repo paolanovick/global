@@ -2,26 +2,24 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CaruselDeportes() {
- const slides = [
-   {
-     src: "https://drive.google.com/file/d/1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT/view?usp=sharing",
-     title: "Ski",
-   },
-   {
-     src: "https://drive.google.com/uc?id=1S3OsXYNdvoe7f7UI4B7_JkrUowGibD-X:",
-     title: "Fórmula 1",
-   },
-   {
-     src: "https://drive.google.com/file/d/1nUWkvf9iHJeaovkgb8WrcOWqQQZatzDY/view?usp=sharing",
-     title: "Fútbol",
-   },
-   {
-     src: "https://drive.google.com/file/d/1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs/view?usp=sharing",
-     title: "Ciclismo",
-     },
-   
- ];
-
+  const slides = [
+    {
+      src: "https://drive.google.com/uc?id=1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT",
+      title: "Ski",
+    },
+    {
+      src: "https://drive.google.com/uc?id=1S3OsXYNdvoe7f7UI4B7_JkrUowGibD-X",
+      title: "Fórmula 1",
+    },
+    {
+      src: "https://drive.google.com/uc?id=1nUWkvf9iHJeaovkgb8WrcOWqQQZatzDY",
+      title: "Fútbol",
+    },
+    {
+      src: "https://drive.google.com/uc?id=1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs",
+      title: "Ciclismo",
+    },
+  ];
 
   const [index, setIndex] = useState(0);
 
@@ -37,18 +35,21 @@ export default function CaruselDeportes() {
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${slides[index].src})`,
-          }}
-          initial={{ rotateY: 90, opacity: 0 }}
-          animate={{ rotateY: 0, opacity: 1 }}
-          exit={{ rotateY: -90, opacity: 0 }}
+          className="absolute inset-0 w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          {/* Overlay + título */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center sm:items-end justify-center sm:justify-start px-4 sm:px-12 pb-6">
-            <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg text-center sm:text-left">
+          {/* Imagen de fondo */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slides[index].src})` }}
+          />
+
+          {/* Gradiente solo en el zócalo */}
+          <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 sm:px-12 pb-4">
+            <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg">
               {slides[index].title}
             </h2>
           </div>
