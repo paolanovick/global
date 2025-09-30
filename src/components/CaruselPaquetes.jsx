@@ -23,7 +23,7 @@ export default function CaruselPaquetes() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               Usuario: "paonovick10@gmail.com",
-              Clave: "cb9daff9-6079-45fc-be02-23e86d8e1b37",
+              Clave: "37Paola37",
               ProductoCodigo: productoCodigo,
             }),
           }
