@@ -5,7 +5,7 @@ import ButtonSidebar from "./components/ButtonSidebar.jsx";
 import Card from "./components/Card.jsx";
 import ContactForm from "./components/ContactForm.jsx";
 import CaruselDeportes from "./components/CaruselDeportes.jsx";
-// import CaruselPaquetes from "./components/CaruselPaquetes.jsx";
+import CaruselPaquetes from "./components/CaruselPaquetes";
 import Footer from "./components/Footer.jsx";
 
 // Componente para las cards de AllSeasons
@@ -33,6 +33,7 @@ function AllSeasonsCards() {
       }
 
       const data = await response.json();
+      // Traer 10 paquetes para las dos filas
       const processedData = data.packages ? data.packages.slice(0, 10) : [];
       setPackages(processedData);
     } catch (err) {
@@ -64,6 +65,7 @@ function AllSeasonsCards() {
     return "bg-gray-600 text-white";
   };
 
+  // Dividir en dos filas
   const firstRow = packages.slice(0, 5);
   const secondRow = packages.slice(5, 10);
 
@@ -94,61 +96,60 @@ function AllSeasonsCards() {
     );
   }
 
-  return (
-    <div className="w-full">
-      <div className="flex justify-between items-center mb-6 px-4">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-800">
-          Destinos Destacados
-        </h2>
-      </div>
+ return (
+   <div className="w-full">
+     <div className="flex justify-between items-center mb-4 px-4">
+       <h2 className="text-xl font-bold text-gray-800">Destinos Destacados</h2>
+     </div>
 
-      {/* Primera fila */}
-      {firstRow.length > 0 && (
-        <div className="w-full overflow-x-auto pb-4 mb-4">
-          <div className="flex gap-4 px-4 md:justify-center md:flex-wrap">
-            {firstRow.map((pkg, index) => (
-              <div key={pkg.id || index} className="flex-shrink-0">
-                <Card
-                  title={pkg.titulo}
-                  image={pkg.imagen_principal}
-                  galeria={pkg.galeria}
-                  price={`${pkg.cant_noches} noches`}
-                  colorClass={getColorByDestination(pkg.ciudad)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+     {/* Primera fila */}
+     {firstRow.length > 0 && (
+       <div className="w-full overflow-x-auto pb-4 mb-4">
+         <div className="flex gap-4 px-2 sm:px-4 md:justify-center md:flex-wrap lg:justify-center">
+           {firstRow.map((pkg, index) => (
+             <div key={pkg.id || index} className="flex-shrink-0">
+               <Card
+                 title={pkg.titulo}
+                 image={pkg.imagen_principal}
+                 galeria={pkg.galeria}
+                 price={`${pkg.cant_noches} noches`}
+                 colorClass={getColorByDestination(pkg.ciudad)}
+               />
+             </div>
+           ))}
+         </div>
+       </div>
+     )}
 
-      {/* Segunda fila */}
-      {secondRow.length > 0 && (
-        <div className="w-full overflow-x-auto pb-4">
-          <div className="flex gap-4 px-4 md:justify-center md:flex-wrap">
-            {secondRow.map((pkg, index) => (
-              <div key={pkg.id || `row2-${index}`} className="flex-shrink-0">
-                <Card
-                  title={pkg.titulo}
-                  image={pkg.imagen_principal}
-                  galeria={pkg.galeria}
-                  price={`${pkg.cant_noches} noches`}
-                  colorClass={getColorByDestination(pkg.ciudad)}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+     {/* Segunda fila */}
+     {secondRow.length > 0 && (
+       <div className="w-full overflow-x-auto pb-4">
+         <div className="flex gap-4 px-2 sm:px-4 md:justify-center md:flex-wrap lg:justify-center">
+           {secondRow.map((pkg, index) => (
+             <div key={pkg.id || `row2-${index}`} className="flex-shrink-0">
+               <Card
+                 title={pkg.titulo}
+                 image={pkg.imagen_principal}
+                 galeria={pkg.galeria}
+                 price={`${pkg.cant_noches} noches`}
+                 colorClass={getColorByDestination(pkg.ciudad)}
+               />
+             </div>
+           ))}
+         </div>
+       </div>
+     )}
 
-      {packages.length === 0 && (
-        <div className="flex justify-center w-full py-8">
-          <div className="text-gray-500">No hay paquetes disponibles</div>
-        </div>
-      )}
-    </div>
-  );
+     {packages.length === 0 && (
+       <div className="flex justify-center w-full py-8">
+         <div className="text-gray-500">No hay paquetes disponibles</div>
+       </div>
+     )}
+   </div>
+ );
 }
 
+// Tu App principal actualizada
 export default function App() {
   const nextSectionRef = useRef(null);
 
@@ -159,45 +160,48 @@ export default function App() {
   };
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full">
       {/* Hero full-screen */}
       <HeroCarousel onClick={scrollToNext} />
 
-      {/* Contenido principal */}
-      <div ref={nextSectionRef} className="w-full bg-gray-100">
+      {/* Segunda sección */}
+      <div ref={nextSectionRef} className="min-h-screen bg-gray-100">
         <Navbar />
 
-        {/* Carrusel de botones */}
-        <div className="w-full py-4 px-4 md:px-6 lg:px-8 bg-gray-50">
+        {/* Carrusel de botones full-width */}
+        <div className="w-full p-4 bg-gray-50">
           <ButtonSidebar />
         </div>
 
-        {/* Carrusel de Deportes */}
+        {/* 🔥 Carrusel de Deportes (responsive) */}
         <div className="w-full">
           <CaruselDeportes />
         </div>
 
         {/* Cards de AllSeasons */}
-        <div className="w-full py-8 bg-white">
+        <div className="w-full p-4 bg-white">
           <AllSeasonsCards />
         </div>
-
-        {/* Detalle paquete Atlas - Comentado hasta resolver permisos */}
-        {/* <div className="w-full py-8 px-4">
-          <h1 className="text-2xl md:text-3xl text-center mb-6">
+        <div className="App">
+          <h1 className="text-3xl text-center my-4">
             Detalle del Paquete ATLAS
           </h1>
           <CaruselPaquetes />
-        </div> */}
-
-        {/* Formulario de contacto - sin padding extra porque tiene fondo negro propio */}
-        <div className="w-full">
-          <ContactForm />
         </div>
 
-        {/* Footer */}
-        <div className="w-full">
+        {/* Formulario de contacto */}
+        <div className="w-full p-4 md:p-8">
+          <ContactForm />
+        </div>
+        <div className="w-full p-4 md:p-8">
           <Footer />
+        </div>
+
+        {/* Resto del contenido de tu app */}
+        <div className="p-4">
+          <div className="text-center text-gray-600">
+            <p>Aquí puedes agregar más secciones de tu aplicación</p>
+          </div>
         </div>
       </div>
     </div>
