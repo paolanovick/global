@@ -6,6 +6,7 @@ import Card from "./components/Card.jsx";
 import ContactForm from "./components/ContactForm.jsx";
 import CaruselDeportes from "./components/CaruselDeportes.jsx";
 import CaruselPaquetes from "./components/CaruselPaquetes";
+import Footer from "./components/Footer.jsx";
 
 // Componente para las cards de AllSeasons
 function AllSeasonsCards() {
