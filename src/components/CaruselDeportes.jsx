@@ -2,30 +2,27 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function CaruselDeportes() {
-  // Slides con links directos de Google Drive (asegurate que sean públicos)
   const slides = [
     {
-      src: "https://drive.google.com/uc?id=1NNbE479z5GDbkzRRcMj4SOozN0mfRrWT",
+      src: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1920&q=80",
       title: "Ski",
     },
     {
-      src: "https://drive.google.com/uc?id=1S3OsXYNdvoe7f7UI4B7_JkrUowGibD-X",
+      src: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&q=80",
       title: "Fórmula 1",
     },
     {
-      src: "https://drive.google.com/uc?id=1nUWkvf9iHJeaovkgb8WrcOWqQQZatzDY",
+      src: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1920&q=80",
       title: "Fútbol",
     },
     {
-      src: "https://drive.google.com/uc?id=1CIbQPQX6k0B798cYNB_Ks1-qKOM6ksJs",
+      src: "https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=1920&q=80",
       title: "Ciclismo",
     },
-   
   ];
 
   const [index, setIndex] = useState(0);
 
-  // Cambia de slide automáticamente cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
@@ -44,13 +41,11 @@ export default function CaruselDeportes() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          {/* Imagen de fondo */}
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[index].src})` }}
           />
 
-          {/* Gradiente solo en el zócalo */}
           <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 sm:px-12 pb-4">
             <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg">
               {slides[index].title}
