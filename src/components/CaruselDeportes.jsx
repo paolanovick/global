@@ -31,7 +31,7 @@ export default function CaruselDeportes() {
   }, [slides.length]);
 
   return (
-    <section className="relative w-full h-[40vh] sm:h-[50vh] overflow-hidden">
+    <section className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -41,13 +41,16 @@ export default function CaruselDeportes() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${slides[index].src})` }}
+          {/* Imagen responsive */}
+          <img
+            src={slides[index].src}
+            alt={slides[index].title}
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
 
-          <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 sm:px-12 pb-4">
-            <h2 className="text-white text-xl sm:text-3xl md:text-5xl font-bold drop-shadow-lg">
+          {/* Gradiente en el zócalo */}
+          <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/80 to-transparent flex items-end px-4 sm:px-8 md:px-12 pb-4">
+            <h2 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold drop-shadow-lg">
               {slides[index].title}
             </h2>
           </div>
